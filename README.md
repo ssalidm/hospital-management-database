@@ -2,11 +2,9 @@
 
 This project is a PostgreSQL-based hospital management database built as a database engineering portfolio project.
 
-## Current Module
+## Module 1: Patient Registration
 
-Module 1: Patient Registration
-
-## Concepts Covered
+Concepts Covered
 
 - PostgreSQL with Docker
 - Schemas
@@ -26,3 +24,22 @@ Main schema: clinical
 ## Tables Created
 
 - clinical.patients
+
+---
+
+## Module 2: Departments and Staff
+
+Concepts covered:
+
+- Reference tables
+- One-to-many relationships
+- Foreign keys
+- Joins
+- Left joins
+- Check constraints
+- Basic indexes
+
+Tables added:
+
+- clinical.departments
+- clinical.staff_members
