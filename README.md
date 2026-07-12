@@ -74,6 +74,8 @@ hospital-management-database/
 │   └── V5__add_appointment_indexes.sql
 │
 ├── queries/
+│   └── lesson_3_5_sql_practice.sql
+│
 └── seed/
     ├── sample_patients.sql
     ├── sample_staff.sql
@@ -488,3 +490,23 @@ FROM clinical.appointments
 GROUP BY status
 ORDER BY status;
 ```
+---
+
+## Lesson 3.5: SQL Practice
+
+Concepts reviewed:
+
+- Reading `SELECT` queries
+- Filtering with `WHERE`
+- Sorting with `ORDER BY`
+- Inserting sample data
+- Understanding seed files
+- Understanding aliases
+- Understanding joins
+- Understanding subqueries
+- Introduction to `EXPLAIN`
+- Beginner explanation of indexes
+
+Practice file added:
+
+- `queries/lesson_3_5_sql_practice.sql`
