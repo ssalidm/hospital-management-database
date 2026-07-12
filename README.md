@@ -63,17 +63,21 @@ Indexes added:
 
 ```text
 hospital-management-database/
-├── docker-compose.yml
 ├── README.md
+├── docker-compose.yml
 ├── docs/
 ├── migrations/
 │   ├── V1__create_patient_registration.sql
 │   ├── V2__create_departments_and_staff.sql
-│   └── V3__add_staff_indexes.sql
+│   ├── V3__add_staff_indexes.sql
+│   ├── V4__create_doctors_and_appointments.sql
+│   └── V5__add_appointment_indexes.sql
+│
 ├── queries/
 └── seed/
     ├── sample_patients.sql
-    └── sample_staff.sql
+    ├── sample_staff.sql
+    └── sample_appointments.sql
 ```
 
 ---
@@ -396,5 +400,91 @@ Planned concepts:
 * Preventing invalid bookings
 * Querying appointment schedules
 
+---
+
+## Module 3: Appointment Scheduling
+
+Concepts covered:
+
+- Doctor profiles
+- Patient-to-doctor appointments
+- Foreign keys
+- Multi-table joins
+- Appointment statuses
+- Time validation
+- Exclusion constraints
+- Overlap prevention
+- Appointment indexes
+
+Tables added:
+
+- `clinical.doctors`
+- `clinical.appointments`
+
+Indexes added:
+
+- `idx_appointments_patient_id`
+- `idx_appointments_doctor_id`
+- `idx_appointments_start`
+- `idx_appointments_status`
+- `idx_appointments_doctor_start`
+
+### Useful Queries
+
+Patient appointment history:
+
+```sql
+SELECT
+    a.appointment_number,
+    a.appointment_start,
+    a.appointment_end,
+    ds.first_name || ' ' || ds.last_name AS doctor_name,
+    a.appointment_type,
+    a.status,
+    a.reason
+FROM clinical.appointments a
+         JOIN clinical.doctors d
+              ON a.doctor_id = d.id
+         JOIN clinical.staff_members ds
+              ON d.staff_member_id = ds.id
+WHERE a.patient_id = (
+    SELECT id
+    FROM clinical.patients
+    WHERE patient_number = 'PAT-2026-000001'
+)
+ORDER BY a.appointment_start DESC;
 ```
+
+Doctor schedule:
+
+```sql
+SELECT
+a.appointment_number,
+a.appointment_start,
+a.appointment_end,
+p.first_name || ' ' || p.last_name AS patient_name,
+a.status,
+a.reason
+FROM clinical.appointments a
+JOIN clinical.patients p
+ON a.patient_id = p.id
+WHERE a.doctor_id = (
+SELECT d.id
+FROM clinical.doctors d
+JOIN clinical.staff_members s
+ON d.staff_member_id = s.id
+WHERE s.staff_number = 'STF-2026-000001'
+)
+ORDER BY a.appointment_start;
+```
+
+Appointments by status:
+
+```sql
+SELECT
+    status,
+    COUNT(*) AS appointment_count
+FROM clinical.appointments
+GROUP BY status
+ORDER BY status;
 ```
