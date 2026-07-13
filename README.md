@@ -71,15 +71,19 @@ hospital-management-database/
 │   ├── V2__create_departments_and_staff.sql
 │   ├── V3__add_staff_indexes.sql
 │   ├── V4__create_doctors_and_appointments.sql
-│   └── V5__add_appointment_indexes.sql
+│   ├── V5__add_appointment_indexes.sql
+│   ├── V6__create_consultations_and_diagnoses.sql
+│   └── V7__add_consultation_indexes.sql
 │
 ├── queries/
+│   ├── consultation_reports.sql
 │   └── lesson_3_5_sql_practice.sql
 │
 └── seed/
+    ├── sample_appointments.sql
+    ├── sample_consultations.sql
     ├── sample_patients.sql
-    ├── sample_staff.sql
-    └── sample_appointments.sql
+    └── sample_staff.sql
 ```
 
 ---
@@ -510,3 +514,36 @@ Concepts reviewed:
 Practice file added:
 
 - `queries/lesson_3_5_sql_practice.sql`
+
+---
+
+## Module 4: Consultations and Diagnoses
+
+Concepts covered:
+
+- Consultation records
+- Diagnosis records
+- One-to-one relationship between appointments and consultations
+- One-to-many relationship between consultations and diagnoses
+- Foreign keys
+- Check constraints
+- Partial unique indexes
+- Medical history queries
+- Multi-table joins
+
+Tables added:
+
+- `clinical.consultations`
+- `clinical.diagnoses`
+
+Indexes added:
+
+- `uq_diagnoses_one_primary_per_consultation`
+- `idx_consultations_appointment_id`
+- `idx_consultations_doctor_id`
+- `idx_diagnoses_consultation_id`
+- `idx_diagnoses_code`
+
+Query files added:
+
+- `queries/consultation_reports.sql`
