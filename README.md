@@ -73,16 +73,20 @@ hospital-management-database/
 │   ├── V4__create_doctors_and_appointments.sql
 │   ├── V5__add_appointment_indexes.sql
 │   ├── V6__create_consultations_and_diagnoses.sql
-│   └── V7__add_consultation_indexes.sql
+│   ├── V7__add_consultation_indexes.sql
+│   ├── V8__create_prescriptions_and_medications.sql
+│   └── V9__add_prescription_indexes.sql
 │
 ├── queries/
 │   ├── consultation_reports.sql
-│   └── lesson_3_5_sql_practice.sql
+│   ├── lesson_3_5_sql_practice.sql
+│   └── prescription_reports.sql
 │
 └── seed/
     ├── sample_appointments.sql
     ├── sample_consultations.sql
     ├── sample_patients.sql
+    ├── sample_prescriptions.sql
     └── sample_staff.sql
 ```
 
@@ -547,3 +551,37 @@ Indexes added:
 Query files added:
 
 - `queries/consultation_reports.sql`
+
+---
+## Module 5: Prescriptions and Medications
+
+Concepts covered:
+
+- Medication catalogue
+- Prescription records
+- Prescription line items
+- One-to-many relationships
+- Foreign keys
+- Unique constraints
+- Check constraints
+- Prescription report queries
+- Indexes for prescription lookups
+
+Tables added:
+
+- `clinical.medications`
+- `clinical.prescriptions`
+- `clinical.prescription_items`
+
+Indexes added:
+
+- `idx_prescriptions_consultation_id`
+- `idx_prescriptions_doctor_id`
+- `idx_prescriptions_status`
+- `idx_prescription_items_prescription_id`
+- `idx_prescription_items_medication_id`
+- `idx_medications_generic_name`
+
+Query files added:
+
+- `queries/prescription_reports.sql`
