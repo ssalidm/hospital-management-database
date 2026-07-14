@@ -75,16 +75,20 @@ hospital-management-database/
 │   ├── V6__create_consultations_and_diagnoses.sql
 │   ├── V7__add_consultation_indexes.sql
 │   ├── V8__create_prescriptions_and_medications.sql
-│   └── V9__add_prescription_indexes.sql
+│   ├── V9__add_prescription_indexes.sql
+│   ├── V10__create_laboratory_tables.sql
+│   └── V11__add_laboratory_indexes.sql
 │
 ├── queries/
 │   ├── consultation_reports.sql
+│   ├── laboratory_reports.sql
 │   ├── lesson_3_5_sql_practice.sql
 │   └── prescription_reports.sql
 │
 └── seed/
     ├── sample_appointments.sql
     ├── sample_consultations.sql
+    ├── sample_laboratory.sql
     ├── sample_patients.sql
     ├── sample_prescriptions.sql
     └── sample_staff.sql
@@ -585,3 +589,37 @@ Indexes added:
 Query files added:
 
 - `queries/prescription_reports.sql`
+
+---
+
+## Module 6: Laboratory Tests and Results
+
+Concepts covered:
+
+- Laboratory test catalogue
+- Laboratory orders
+- Laboratory order items
+- Laboratory results
+- Parent-and-child table design
+- Foreign keys
+- Unique constraints
+- Status constraints
+- Historical result values
+- Left joins for missing results
+- Laboratory reporting queries
+
+Tables added:
+
+- `clinical.lab_tests`
+- `clinical.lab_orders`
+- `clinical.lab_order_items`
+- `clinical.lab_results`
+
+Migrations added:
+
+- `V10__create_laboratory_tables.sql`
+- `V11__add_laboratory_indexes.sql`
+
+Query files added:
+
+- `queries/laboratory_reports.sql`
