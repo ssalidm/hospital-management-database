@@ -77,15 +77,19 @@ hospital-management-database/
 │   ├── V8__create_prescriptions_and_medications.sql
 │   ├── V9__add_prescription_indexes.sql
 │   ├── V10__create_laboratory_tables.sql
-│   └── V11__add_laboratory_indexes.sql
+│   ├── V11__add_laboratory_indexes.sql
+│   ├── V12__create_admissions_and_beds.sql
+│   └── V13__add_admission_indexes.sql
 │
 ├── queries/
+│   ├── admission_reports.sql
 │   ├── consultation_reports.sql
 │   ├── laboratory_reports.sql
 │   ├── lesson_3_5_sql_practice.sql
 │   └── prescription_reports.sql
 │
 └── seed/
+    ├── sample_admissions.sql
     ├── sample_appointments.sql
     ├── sample_consultations.sql
     ├── sample_laboratory.sql
@@ -623,3 +627,36 @@ Migrations added:
 Query files added:
 
 - `queries/laboratory_reports.sql`
+
+---
+
+## Module 7: Admissions and Bed Management
+
+Concepts covered:
+
+- Hospital wards, rooms, and beds
+- Patient admissions
+- Bed assignment history
+- One-to-many relationships
+- Partial unique indexes
+- Derived bed occupancy
+- Transactions
+- Patient transfers
+- Patient discharge workflows
+
+Tables added:
+
+- `clinical.wards`
+- `clinical.rooms`
+- `clinical.beds`
+- `clinical.admissions`
+- `clinical.bed_assignments`
+
+Migrations added:
+
+- `V12__create_admissions_and_beds.sql`
+- `V13__add_admission_indexes.sql`
+
+Query files added:
+
+- `queries/admission_reports.sql`
