@@ -660,3 +660,39 @@ Migrations added:
 Query files added:
 
 - `queries/admission_reports.sql`
+
+---
+
+## Module 8: Billing, Invoices, and Payments
+
+Concepts covered:
+
+- Separate billing schema
+- Hospital service catalogue
+- Invoice headers and invoice items
+- Exact monetary values using NUMERIC
+- Historical invoice pricing
+- Partial payments
+- Derived outstanding balances
+- SUM and GROUP BY
+- Common Table Expressions
+- COALESCE
+- CASE expressions
+- Row locking with FOR UPDATE
+- Financial transactions
+
+Tables added:
+
+- `billing.services`
+- `billing.invoices`
+- `billing.invoice_items`
+- `billing.payments`
+
+Migrations added:
+
+- `V14__create_billing_tables.sql`
+- `V15__add_billing_indexes.sql`
+
+Query files added:
+
+- `queries/billing_reports.sql`
