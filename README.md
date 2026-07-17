@@ -79,10 +79,15 @@ hospital-management-database/
 │   ├── V10__create_laboratory_tables.sql
 │   ├── V11__add_laboratory_indexes.sql
 │   ├── V12__create_admissions_and_beds.sql
-│   └── V13__add_admission_indexes.sql
+│   ├── V13__add_admission_indexes.sql
+│   ├── V14__create_billing_tables.sql
+│   ├── V15__add_billing_indexes.sql
+│   ├── V16__create_security_views.sql
+│   └── V17__create_database_roles.sql
 │
 ├── queries/
 │   ├── admission_reports.sql
+│   ├── billing_reports.sql
 │   ├── consultation_reports.sql
 │   ├── laboratory_reports.sql
 │   ├── lesson_3_5_sql_practice.sql
@@ -91,6 +96,7 @@ hospital-management-database/
 └── seed/
     ├── sample_admissions.sql
     ├── sample_appointments.sql
+    ├── sample_billing.sql
     ├── sample_consultations.sql
     ├── sample_laboratory.sql
     ├── sample_patients.sql
@@ -696,3 +702,40 @@ Migrations added:
 Query files added:
 
 - `queries/billing_reports.sql`
+
+---
+
+## Module 9: Database Roles and Permissions
+
+Concepts covered:
+
+- PostgreSQL roles
+- LOGIN and NOLOGIN roles
+- Role membership
+- Least privilege
+- Schema permissions
+- Table permissions
+- Column-level permissions
+- Restricted reporting views
+- GRANT and REVOKE
+- Testing access with SET ROLE
+- Keeping passwords out of Git
+
+Roles added:
+
+- `hms_receptionist`
+- `hms_doctor`
+- `hms_lab_technician`
+- `hms_billing_clerk`
+- `hms_reporting`
+
+Views added:
+
+- `reporting.patient_directory`
+- `reporting.lab_work_queue`
+- `reporting.invoice_balances`
+
+Migrations added:
+
+- `V16__create_security_views.sql`
+- `V17__create_database_roles.sql`
