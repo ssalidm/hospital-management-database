@@ -83,9 +83,12 @@ hospital-management-database/
 │   ├── V14__create_billing_tables.sql
 │   ├── V15__add_billing_indexes.sql
 │   ├── V16__create_security_views.sql
-│   └── V17__create_database_roles.sql
+│   ├── V17__create_database_roles.sql
+│   ├── V18__create_transaction_functions.sql
+│   └── V19__secure_transaction_function.sql
 │
 ├── queries/
+│   ├── concurrency_test_data.sql
 │   ├── admission_reports.sql
 │   ├── billing_reports.sql
 │   ├── consultation_reports.sql
@@ -739,3 +742,36 @@ Migrations added:
 
 - `V16__create_security_views.sql`
 - `V17__create_database_roles.sql`
+
+---
+
+## Module 10: Transactions and Concurrency
+
+Concepts covered:
+
+- ACID properties
+- BEGIN, COMMIT, and ROLLBACK
+- Failed transaction state and error 25P02
+- Auto-commit and manual transaction modes
+- Row locking with FOR UPDATE
+- Race conditions
+- Concurrent bed assignment
+- Safe payment recording
+- Transaction isolation levels
+- Non-repeatable reads
+- Savepoints
+- Deadlocks
+- Consistent lock ordering
+
+Functions added:
+
+- `clinical.assign_bed`
+- `billing.record_payment`
+
+Migration added:
+
+- `V18__create_transaction_functions.sql`
+
+Seed file added:
+
+- `seed/concurrency_test_data.sql`
