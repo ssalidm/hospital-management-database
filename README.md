@@ -65,7 +65,12 @@ Indexes added:
 hospital-management-database/
 ├── README.md
 ├── docker-compose.yml
+├── benchmarks/
+│   └── module_11_query_performance.sql
+│
 ├── docs/
+│   └── performance-report.md
+│
 ├── migrations/
 │   ├── V1__create_patient_registration.sql
 │   ├── V2__create_departments_and_staff.sql
@@ -775,3 +780,28 @@ Migration added:
 Seed file added:
 
 - `seed/concurrency_test_data.sql`
+
+---
+
+## Module 11: Query Performance
+
+Concepts covered:
+
+- PostgreSQL query planner
+- EXPLAIN
+- EXPLAIN ANALYZE
+- Buffer usage
+- Sequential scans
+- Index scans
+- Bitmap index scans
+- Composite indexes
+- Query selectivity
+- Planner statistics
+- Estimated versus actual rows
+- Join strategies
+- Duplicate index avoidance
+
+Files added:
+
+- `benchmarks/module_11_query_performance.sql`
+- `docs/performance-report.md`
