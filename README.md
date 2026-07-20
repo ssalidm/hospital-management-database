@@ -65,10 +65,12 @@ Indexes added:
 hospital-management-database/
 ├── README.md
 ├── docker-compose.yml
+├── backups/
 ├── benchmarks/
 │   └── module_11_query_performance.sql
 │
 ├── docs/
+│   ├── backup-and-recovery.md
 │   └── performance-report.md
 │
 ├── migrations/
@@ -100,6 +102,10 @@ hospital-management-database/
 │   ├── laboratory_reports.sql
 │   ├── lesson_3_5_sql_practice.sql
 │   └── prescription_reports.sql
+│
+├── scripts/
+│   ├── backup_database.sh
+│   └── test_restore.sh
 │
 └── seed/
     ├── sample_admissions.sql
@@ -805,3 +811,31 @@ Files added:
 
 - `benchmarks/module_11_query_performance.sql`
 - `docs/performance-report.md`
+
+---
+
+## Module 12: Backups and Restoration
+
+Concepts covered:
+
+- Logical and physical backups
+- PostgreSQL custom backup format
+- `pg_dump`
+- `pg_dumpall`
+- `pg_restore`
+- Restoration testing
+- Recovery verification
+- Database role backups
+- Recovery Point Objective
+- Recovery Time Objective
+- Point-in-time recovery concepts
+- Secure backup handling
+
+Scripts added:
+
+- `scripts/backup_database.sh`
+- `scripts/test_restore.sh`
+
+Documentation added:
+
+- `docs/backup-and-recovery.md`
