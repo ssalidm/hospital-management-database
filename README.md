@@ -64,6 +64,7 @@ Indexes added:
 ```text
 hospital-management-database/
 ├── README.md
+├── docker-compose.flyway-test.yml
 ├── docker-compose.yml
 ├── backups/
 ├── benchmarks/
@@ -74,6 +75,7 @@ hospital-management-database/
 │   └── performance-report.md
 │
 ├── migrations/
+│   ├── R__invoice_balances_view.sql
 │   ├── V1__create_patient_registration.sql
 │   ├── V2__create_departments_and_staff.sql
 │   ├── V3__add_staff_indexes.sql
@@ -92,7 +94,8 @@ hospital-management-database/
 │   ├── V16__create_security_views.sql
 │   ├── V17__create_database_roles.sql
 │   ├── V18__create_transaction_functions.sql
-│   └── V19__secure_transaction_function.sql
+│   ├── V19__secure_transaction_function.sql
+│   └── V20__add_patient_preferred_language.sql
 │
 ├── queries/
 │   ├── concurrency_test_data.sql
@@ -105,6 +108,7 @@ hospital-management-database/
 │
 ├── scripts/
 │   ├── backup_database.sh
+│   ├── flyway.sh
 │   └── test_restore.sh
 │
 └── seed/
@@ -839,3 +843,55 @@ Scripts added:
 Documentation added:
 
 - `docs/backup-and-recovery.md`
+
+---
+
+## Module 13: Flyway Migration Automation
+
+Concepts covered:
+
+- Automated database migrations
+- Flyway schema history
+- Versioned migrations
+- Repeatable migrations
+- Baselining an existing database
+- Migration checksums
+- Validation
+- Clean-database migration testing
+- Failed migration handling
+- Migration immutability
+
+Flyway commands:
+
+```bash
+./scripts/flyway.sh info
+./scripts/flyway.sh validate
+./scripts/flyway.sh migrate
+```
+Files added:
+
+- `migrations/V20__add_patient_preferred_language.sql`
+- `migrations/R__invoice_balances_view.sql`
+- `scripts/flyway.sh`
+- `docker-compose.flyway-test.yml`
+
+## The important mental mode is:
+
+```text
+Migration file
+= one controlled database change
+
+flyway_schema_history
+= Flyway’s record of completed changes
+
+baseline
+= tell Flyway where an existing database currently starts
+
+validate
+= check migration files against recorded history
+
+migrate
+= apply pending changes
+
+repeatable migration
+= recreate an object when its definition changes

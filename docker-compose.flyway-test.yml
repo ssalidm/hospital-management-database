@@ -1,0 +1,31 @@
+services:
+  postgres_test:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: hospital_flyway_test
+      POSTGRES_USER: hospital_user
+      POSTGRES_PASSWORD: hospital_password
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U hospital_user -d hospital_flyway_test"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  flyway_test:
+    image: redgate/flyway
+    depends_on:
+      postgres_test:
+        condition: service_healthy
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres_test:5432/hospital_flyway_test
+      FLYWAY_USER: hospital_user
+      FLYWAY_PASSWORD: hospital_password
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+      FLYWAY_DEFAULT_SCHEMA: public
+      FLYWAY_VALIDATE_MIGRATION_NAMING: "true"
+    volumes:
+      - ./migrations:/flyway/sql:ro

@@ -16,5 +16,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  flyway:
+    image: redgate/flyway
+    environment:
+      FLYWAY_URL: jdbc:postgresql://postgres:5432/hospital_db
+      FLYWAY_USER: hospital_user
+      FLYWAY_PASSWORD: hospital_password
+      FLYWAY_LOCATIONS: filesystem:/flyway/sql
+      FLYWAY_DEFAULT_MIGRATION_NAMING: "true"
+    volumes:
+      - ./migrations:/flyway/sql:ro
+    depends_on:
+      - postgres
+
 volumes:
   hospital_postgres_data:

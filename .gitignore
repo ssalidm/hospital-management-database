@@ -4,3 +4,4 @@ local/create_dev_users.sql
 # Database backups
 backups/*.dump
 backups/*.sql
+backups/*bak
