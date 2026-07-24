@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: hospital-api
+
+  profiles:
+    active: local
+
+  datasource:
+    url: ${HMS_DB_URL:jdbc:postgresql://localhost:5432/hospital_db}
+    username: ${HMS_DB_USER}
+    password: ${HMS_DB_PASSWORD}
+
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+
+  flyway:
+    enabled: true
+    url: ${HMS_FLYWAY_URL:jdbc:postgresql://localhost:5432/hospital_db}
+    user: ${HMS_FLYWAY_USER}
+    password: ${HMS_FLYWAY_PASSWORD}
+    locations: classpath:db/migration
+
+  sql:
+    init:
+      mode: never
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.jdbc.core: DEBUG
+    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
